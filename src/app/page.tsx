@@ -48,145 +48,140 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Main Content */}
-      <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-8">
-        {/* Left Side - Navigation */}
+      {/* Main Content - Centered */}
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 text-center">
+        {/* Header Section */}
         <motion.div 
-          className="lg:w-1/2 flex flex-col items-center lg:items-start justify-center space-y-8 lg:pr-16"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          className="mb-12"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
-              Hi, I&apos;m Vinsuka
-            </h1>
-            <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
-              Builder, creator, and entrepreneur focused on building products 
-              that solve real problems and create meaningful impact.
-            </p>
-          </div>
-
-          {/* Navigation Menu */}
-          <nav className="space-y-6">
-            {navigationItems.map((item) => (
-              <motion.div
-                key={item.id}
-                onHoverStart={() => handleHover(item)}
-                onHoverEnd={() => handleHover(null)}
-                whileHover={{ x: 10 }}
-                transition={{ duration: 0.2 }}
-                className="group"
-              >
-                <Link
-                  href={item.href}
-                  className="flex items-center space-x-4 text-2xl font-bold text-gray-400 hover:text-black transition-colors duration-300"
-                >
-                  <span className="relative">
-                    {item.label}
-                    {/* Hover underline */}
-                    <motion.div
-                      className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </span>
-                  <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-        </motion.div>
-
-        {/* Right Side - Profile Image */}
-        <motion.div 
-          className="lg:w-1/2 flex items-center justify-center lg:pl-16 mt-12 lg:mt-0"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImage}
-                className="w-full h-full rounded-2xl overflow-hidden bg-gray-200"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Placeholder images - replace with actual images later */}
-                {currentImage === "/profile-image.jpg" && (
-                  <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                    <div className="text-center text-gray-600">
-                      <div className="w-24 h-24 bg-gray-500 rounded-full mx-auto mb-4"></div>
-                      <p className="text-lg font-medium">Profile Photo</p>
-                    </div>
-                  </div>
-                )}
-                {currentImage === "/building-image.jpg" && (
-                  <div className="w-full h-full bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="w-24 h-24 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-4xl">🏗️</span>
-                      </div>
-                      <p className="text-lg font-medium">Building</p>
-                    </div>
-                  </div>
-                )}
-                {currentImage === "/results-image.jpg" && (
-                  <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="w-24 h-24 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-4xl">📊</span>
-                      </div>
-                      <p className="text-lg font-medium">Results</p>
-                    </div>
-                  </div>
-                )}
-                {currentImage === "/insights-image.jpg" && (
-                  <div className="w-full h-full bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="w-24 h-24 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-4xl">💡</span>
-                      </div>
-                      <p className="text-lg font-medium">Insights</p>
-                    </div>
-                  </div>
-                )}
-                {currentImage === "/contact-image.jpg" && (
-                  <div className="w-full h-full bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="w-24 h-24 bg-orange-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-4xl">📧</span>
-                      </div>
-                      <p className="text-lg font-medium">Contact</p>
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* About Me Section */}
-      <motion.section 
-        className="py-20 bg-gray-50"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-3xl font-bold text-black mb-6">About Me</h2>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            I&apos;m passionate about creating innovative solutions that make a difference. 
-            With expertise in product development, design, and entrepreneurship, I help 
-            bring ideas to life and scale them into successful businesses.
+          <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
+            Hi, I&apos;m Vinsuka
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Builder, creator, and entrepreneur focused on building products 
+            that solve real problems and create meaningful impact.
           </p>
+        </motion.div>
+
+        {/* Main Content Row */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 max-w-6xl">
+          {/* Left Side - Navigation */}
+          <motion.div 
+            className="flex flex-col items-center space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          >
+            {/* Navigation Menu */}
+            <nav className="space-y-6">
+              {navigationItems.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  onHoverStart={() => handleHover(item)}
+                  onHoverEnd={() => handleHover(null)}
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 + index * 0.1 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="flex items-center space-x-4 text-2xl font-bold text-gray-400 hover:text-black transition-colors duration-300"
+                  >
+                    <span className="relative">
+                      {item.label}
+                      {/* Hover underline */}
+                      <motion.div
+                        className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </span>
+                    <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+
+          {/* Right Side - Profile Image */}
+          <motion.div 
+            className="flex items-center justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+          >
+            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage}
+                  className="w-full h-full rounded-2xl overflow-hidden bg-gray-200"
+                  initial={{ y: 30, scale: 0.95 }}
+                  animate={{ y: 0, scale: 1 }}
+                  exit={{ y: -30, scale: 1.05 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                >
+                  {/* Placeholder images - replace with actual images later */}
+                  {currentImage === "/profile-image.jpg" && (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                      <div className="text-center text-gray-600">
+                        <div className="w-24 h-24 bg-gray-500 rounded-full mx-auto mb-4"></div>
+                        <p className="text-lg font-medium">Profile Photo</p>
+                      </div>
+                    </div>
+                  )}
+                  {currentImage === "/building-image.jpg" && (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="w-24 h-24 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                          <span className="text-4xl">🏗️</span>
+                        </div>
+                        <p className="text-lg font-medium">Building</p>
+                      </div>
+                    </div>
+                  )}
+                  {currentImage === "/results-image.jpg" && (
+                    <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="w-24 h-24 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                          <span className="text-4xl">📊</span>
+                        </div>
+                        <p className="text-lg font-medium">Results</p>
+                      </div>
+                    </div>
+                  )}
+                  {currentImage === "/insights-image.jpg" && (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="w-24 h-24 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                          <span className="text-4xl">💡</span>
+                        </div>
+                        <p className="text-lg font-medium">Insights</p>
+                      </div>
+                    </div>
+                  )}
+                  {currentImage === "/contact-image.jpg" && (
+                    <div className="w-full h-full bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="w-24 h-24 bg-orange-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                          <span className="text-4xl">📧</span>
+                        </div>
+                        <p className="text-lg font-medium">Contact</p>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </div>
     </main>
   )
 }
