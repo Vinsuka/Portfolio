@@ -122,19 +122,18 @@ export default function Home() {
                 <motion.div
                   key={currentImage}
                   className="w-full h-full rounded-2xl overflow-hidden bg-gray-200"
-                  initial={{ y: 30, scale: 0.95 }}
-                  animate={{ y: 0, scale: 1 }}
-                  exit={{ y: -30, scale: 1.05 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  {/* Placeholder images - replace with actual images later */}
+                  {/* Profile Image */}
                   {currentImage === "/profile-image.jpg" && (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                      <div className="text-center text-gray-600">
-                        <div className="w-24 h-24 bg-gray-500 rounded-full mx-auto mb-4"></div>
-                        <p className="text-lg font-medium">Profile Photo</p>
-                      </div>
-                    </div>
+                    <img
+                      src="/profile-image.jpg"
+                      alt="Vinsuka - Profile Photo"
+                      className="w-full h-full object-cover"
+                    />
                   )}
                   {currentImage === "/building-image.jpg" && (
                     <div className="w-full h-full bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
