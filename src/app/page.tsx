@@ -65,7 +65,7 @@ export default function Home() {
             Builder, creator, and entrepreneur focused on building products 
             that solve real problems and create meaningful impact. Passionate about 
             innovation, design thinking, and turning ideas into scalable solutions 
-            that make a difference in people's lives.
+            that make a difference in people&apos;s lives.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
