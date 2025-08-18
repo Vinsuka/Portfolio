@@ -12,13 +12,7 @@ export const metadata: Metadata = {
   description: "Personal portfolio showcasing my work, results, insights, and ways to connect.",
   icons: {
     icon: '/icon.png',
-    shortcut: '/icon.png',
     apple: '/icon.png',
-    other: [
-      { rel: 'icon', url: '/icon.png' },
-      { rel: 'shortcut icon', url: '/icon.png' },
-      { rel: 'apple-touch-icon', url: '/icon.png' },
-    ],
   },
 };
 
