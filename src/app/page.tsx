@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 
 interface NavigationItem {
   id: string
@@ -83,7 +84,6 @@ export default function Home() {
                   onHoverStart={() => handleHover(item)}
                   onHoverEnd={() => handleHover(null)}
                   whileHover={{ x: 10 }}
-                  transition={{ duration: 0.2 }}
                   className="group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -129,9 +129,11 @@ export default function Home() {
                 >
                   {/* Profile Image */}
                   {currentImage === "/profile-image.jpg" && (
-                    <img
+                    <Image
                       src="/profile-image.jpg"
                       alt="Vinsuka - Profile Photo"
+                      width={400}
+                      height={400}
                       className="w-full h-full object-cover"
                     />
                   )}
