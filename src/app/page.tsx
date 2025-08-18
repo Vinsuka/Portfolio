@@ -1,87 +1,192 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Navigation from "@/components/Navigation"
-import Hero from "@/components/sections/Hero"
-import Building from "@/components/sections/Building"
-import Results from "@/components/sections/Results"
-import Insights from "@/components/sections/Insights"
-import Connect from "@/components/sections/Connect"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+
+interface NavigationItem {
+  id: string
+  label: string
+  href: string
+  image: string
+}
+
+const navigationItems: NavigationItem[] = [
+  {
+    id: "building",
+    label: "Building",
+    href: "/building",
+    image: "/building-image.jpg"
+  },
+  {
+    id: "results",
+    label: "Results",
+    href: "/results",
+    image: "/results-image.jpg"
+  },
+  {
+    id: "insights",
+    label: "Insights",
+    href: "/insights",
+    image: "/insights-image.jpg"
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    href: "/contact",
+    image: "/contact-image.jpg"
+  }
+]
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("hero")
-  const [isScrolling, setIsScrolling] = useState(false)
+  const [currentImage, setCurrentImage] = useState("/profile-image.jpg")
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolling(true)
-      const timeout = setTimeout(() => setIsScrolling(false), 150)
-      return () => clearTimeout(timeout)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const sections = [
-    { id: "hero", component: Hero },
-    { id: "building", component: Building },
-    { id: "results", component: Results },
-    { id: "insights", component: Insights },
-    { id: "connect", component: Connect }
-  ]
-
-  const handleSectionChange = (sectionId: string) => {
-    setActiveSection(sectionId)
-    
-    // Smooth scroll to section
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const handleHover = (item: NavigationItem | null) => {
+    setCurrentImage(item?.image || "/profile-image.jpg")
   }
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Navigation */}
-      <Navigation 
-        activeSection={activeSection} 
-        onSectionChange={handleSectionChange}
-      />
-      
       {/* Main Content */}
-      <div className="ml-64">
-        <AnimatePresence mode="wait">
-          {sections.map(({ id, component: Component }) => (
-            <motion.div
-              key={id}
-              id={id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Component />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-8">
+        {/* Left Side - Navigation */}
+        <motion.div 
+          className="lg:w-1/2 flex flex-col items-center lg:items-start justify-center space-y-8 lg:pr-16"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
+              Hi, I&apos;m Vinsuka
+            </h1>
+            <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
+              Builder, creator, and entrepreneur focused on building products 
+              that solve real problems and create meaningful impact.
+            </p>
+          </div>
+
+          {/* Navigation Menu */}
+          <nav className="space-y-6">
+            {navigationItems.map((item) => (
+              <motion.div
+                key={item.id}
+                onHoverStart={() => handleHover(item)}
+                onHoverEnd={() => handleHover(null)}
+                whileHover={{ x: 10 }}
+                transition={{ duration: 0.2 }}
+                className="group"
+              >
+                <Link
+                  href={item.href}
+                  className="flex items-center space-x-4 text-2xl font-bold text-gray-400 hover:text-black transition-colors duration-300"
+                >
+                  <span className="relative">
+                    {item.label}
+                    {/* Hover underline */}
+                    <motion.div
+                      className="absolute bottom-0 left-0 h-0.5 bg-black origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.2 }}
+                    />
+                  </span>
+                  <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
+        </motion.div>
+
+        {/* Right Side - Profile Image */}
+        <motion.div 
+          className="lg:w-1/2 flex items-center justify-center lg:pl-16 mt-12 lg:mt-0"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImage}
+                className="w-full h-full rounded-2xl overflow-hidden bg-gray-200"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.1 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Placeholder images - replace with actual images later */}
+                {currentImage === "/profile-image.jpg" && (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                    <div className="text-center text-gray-600">
+                      <div className="w-24 h-24 bg-gray-500 rounded-full mx-auto mb-4"></div>
+                      <p className="text-lg font-medium">Profile Photo</p>
+                    </div>
+                  </div>
+                )}
+                {currentImage === "/building-image.jpg" && (
+                  <div className="w-full h-full bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="w-24 h-24 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <span className="text-4xl">🏗️</span>
+                      </div>
+                      <p className="text-lg font-medium">Building</p>
+                    </div>
+                  </div>
+                )}
+                {currentImage === "/results-image.jpg" && (
+                  <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="w-24 h-24 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <span className="text-4xl">📊</span>
+                      </div>
+                      <p className="text-lg font-medium">Results</p>
+                    </div>
+                  </div>
+                )}
+                {currentImage === "/insights-image.jpg" && (
+                  <div className="w-full h-full bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="w-24 h-24 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <span className="text-4xl">💡</span>
+                      </div>
+                      <p className="text-lg font-medium">Insights</p>
+                    </div>
+                  </div>
+                )}
+                {currentImage === "/contact-image.jpg" && (
+                  <div className="w-full h-full bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="w-24 h-24 bg-orange-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <span className="text-4xl">📧</span>
+                      </div>
+                      <p className="text-lg font-medium">Contact</p>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll Progress Indicator */}
-      <motion.div
-        className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isScrolling ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+      {/* About Me Section */}
+      <motion.section 
+        className="py-20 bg-gray-50"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <motion.div
-          className="h-full bg-black origin-left"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-        />
-      </motion.div>
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-6">About Me</h2>
+          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            I&apos;m passionate about creating innovative solutions that make a difference. 
+            With expertise in product development, design, and entrepreneurship, I help 
+            bring ideas to life and scale them into successful businesses.
+          </p>
+        </div>
+      </motion.section>
     </main>
   )
 }
