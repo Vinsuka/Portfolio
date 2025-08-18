@@ -61,10 +61,24 @@ export default function Home() {
           <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
             Hi, I&apos;m Vinsuka
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-4">
             Builder, creator, and entrepreneur focused on building products 
             that solve real problems and create meaningful impact.
           </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            className="flex justify-center"
+          >
+            <Image
+              src="/signature.png"
+              alt="Vinsuka - Signature"
+              width={120}
+              height={40}
+              className="opacity-80"
+            />
+          </motion.div>
         </motion.div>
 
         {/* Main Content Row */}
