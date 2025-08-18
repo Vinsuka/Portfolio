@@ -61,9 +61,11 @@ export default function Home() {
           <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
             Hi, I&apos;m Vinsuka
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-4">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
             Builder, creator, and entrepreneur focused on building products 
-            that solve real problems and create meaningful impact.
+            that solve real problems and create meaningful impact. Passionate about 
+            innovation, design thinking, and turning ideas into scalable solutions 
+            that make a difference in people's lives.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -74,8 +76,8 @@ export default function Home() {
             <Image
               src="/signature.png"
               alt="Vinsuka - Signature"
-              width={120}
-              height={40}
+              width={180}
+              height={65}
               className="opacity-80"
             />
           </motion.div>
