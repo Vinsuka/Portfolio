@@ -11,15 +11,12 @@ export const metadata: Metadata = {
   title: "Portfolio | Building, Results, Insights, Connect",
   description: "Personal portfolio showcasing my work, results, insights, and ways to connect.",
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.png', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
+    icon: '/icon.png',
+    shortcut: '/icon.png',
     apple: '/icon.png',
     other: [
-      { rel: 'icon', url: '/favicon.ico' },
-      { rel: 'shortcut icon', url: '/favicon.ico' },
+      { rel: 'icon', url: '/icon.png' },
+      { rel: 'shortcut icon', url: '/icon.png' },
       { rel: 'apple-touch-icon', url: '/icon.png' },
     ],
   },
