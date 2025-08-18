@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   title: "Portfolio | Building, Results, Insights, Connect",
   description: "Personal portfolio showcasing my work, results, insights, and ways to connect.",
   icons: {
-    icon: '/icon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
     apple: '/icon.png',
   },
 };
