@@ -10,6 +10,15 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Portfolio | Building, Results, Insights, Connect",
   description: "Personal portfolio showcasing my work, results, insights, and ways to connect.",
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: ['/icon.png'],
+  },
 };
 
 export default function RootLayout({
