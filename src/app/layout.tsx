@@ -12,12 +12,17 @@ export const metadata: Metadata = {
   description: "Personal portfolio showcasing my work, results, insights, and ways to connect.",
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon.png', type: 'image/png', sizes: '16x16' },
     ],
     apple: [
-      { url: '/icon.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png', sizes: '180x180' },
     ],
-    shortcut: ['/icon.png'],
+    shortcut: '/icon.png',
+    other: [
+      { rel: 'icon', url: '/icon.png', type: 'image/png' },
+      { rel: 'shortcut icon', url: '/icon.png', type: 'image/png' },
+    ],
   },
 };
 
@@ -28,6 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon.png" />
+        <link rel="shortcut icon" href="/icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
