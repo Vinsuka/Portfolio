@@ -165,7 +165,6 @@ const ventures: Venture[] = [
 
 export default function Building() {
   const [expandedVenture, setExpandedVenture] = useState<string | null>(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   // Shuffle images for gallery ventures
   const shuffledVentures = ventures.map(venture => {
@@ -178,42 +177,15 @@ export default function Building() {
     return venture
   })
 
-  // Auto-advance images for gallery ventures
-  useEffect(() => {
-    if (expandedVenture) {
-      const venture = ventures.find(v => v.id === expandedVenture)
-      if (venture?.type === 'gallery' && venture.images) {
-        const interval = setInterval(() => {
-          setCurrentImageIndex((prev) => (prev + 1) % venture.images!.length)
-        }, 3000) // Change image every 3 seconds
-        
-        return () => clearInterval(interval)
-      }
-    }
-  }, [expandedVenture])
+
 
   const handleVentureClick = (ventureId: string) => {
     setExpandedVenture(expandedVenture === ventureId ? null : ventureId)
-    setCurrentImageIndex(0)
   }
 
-  const nextImage = () => {
-    if (expandedVenture) {
-      const venture = ventures.find(v => v.id === expandedVenture)
-      if (venture?.images) {
-        setCurrentImageIndex((prev) => (prev + 1) % venture.images!.length)
-      }
-    }
-  }
 
-  const prevImage = () => {
-    if (expandedVenture) {
-      const venture = ventures.find(v => v.id === expandedVenture)
-      if (venture?.images) {
-        setCurrentImageIndex((prev) => (prev - 1 + venture.images!.length) % venture.images!.length)
-      }
-    }
-  }
+
+
 
   return (
     <div className="min-h-screen bg-white">
