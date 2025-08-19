@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import { ArrowUpRight, X, Expand, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowUpRight, X, Expand } from "lucide-react"
 import Image from "next/image"
 
 interface Venture {
@@ -368,9 +368,9 @@ export default function Building() {
                               }}
                             >
                               {/* Duplicate media files for seamless loop */}
-                              {[...venture.images, ...venture.images].map((media, idx) => {
+                              {venture.images && [...venture.images, ...venture.images].map((media, idx) => {
                                 const isVideo = media.toLowerCase().endsWith('.mov');
-                                const displayIndex = (idx % venture.images.length) + 1;
+                                const displayIndex = (idx % venture.images!.length) + 1;
                                 
                                 return (
                                   <div
