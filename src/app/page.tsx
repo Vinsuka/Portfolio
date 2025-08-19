@@ -61,12 +61,15 @@ export default function Home() {
           <h1 className="text-5xl lg:text-6xl font-bold text-black mb-6">
             Hi, I&apos;m Vinsuka
           </h1>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
-            Builder, creator, and entrepreneur focused on building products 
-            that solve real problems and create meaningful impact. Passionate about 
-            innovation, design thinking, and turning ideas into scalable solutions 
-            that make a difference in people&apos;s lives.
-          </p>
+                           <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                   I&apos;m in my 20s, chasing the vision of building something meaningful and impactful. Instead of taking the safer, familiar path, I&apos;ve chosen to embrace uncertainty — investing my energy into shaping ideas and bringing them to life with some incredible people by my side.
+                 </p>
+                 <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                   I believe in building in public, sharing the real journey with full transparency — the wins, the struggles, the lessons, and everything in between.
+                 </p>
+                 <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                   This is more than just work; it&apos;s my digital footprint. My journey. And you&apos;re welcome to be part of it.
+                 </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
