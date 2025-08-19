@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import { ArrowUpRight, TrendingUp, Users, DollarSign, X } from "lucide-react"
 
 interface CaseStudy {
@@ -375,6 +376,7 @@ export default function ResultsPage() {
           )}
         </AnimatePresence>
       </main>
+      <Footer />
     </>
   )
 }

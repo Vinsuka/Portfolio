@@ -18,25 +18,25 @@ const navigationItems: NavigationItem[] = [
     id: "building",
     label: "Building",
     href: "/building",
-    image: "/building-image.jpg"
+    image: "/01.mp4"
   },
   {
     id: "results",
     label: "Results",
     href: "/results",
-    image: "/results-image.jpg"
+    image: "/02.mp4"
   },
   {
     id: "insights",
     label: "Insights",
     href: "/insights",
-    image: "/insights-image.jpg"
+    image: "/03.mp4"
   },
   {
     id: "contact",
-    label: "Contact",
+    label: "Connect",
     href: "/contact",
-    image: "/contact-image.jpg"
+    image: "/04.mp4"
   }
 ]
 
@@ -84,7 +84,7 @@ export default function Home() {
         </motion.div>
 
         {/* Main Content Row */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 max-w-6xl">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 max-w-6xl mb-0">
           {/* Left Side - Navigation */}
           <motion.div 
             className="flex flex-col items-center space-y-8"
@@ -153,45 +153,45 @@ export default function Home() {
                       className="w-full h-full object-cover"
                     />
                   )}
-                  {currentImage === "/building-image.jpg" && (
-                    <div className="w-full h-full bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-24 h-24 bg-blue-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                          <span className="text-4xl">🏗️</span>
-                        </div>
-                        <p className="text-lg font-medium">Building</p>
-                      </div>
-                    </div>
+                  {currentImage === "/01.mp4" && (
+                    <video
+                      src="/01.mp4"
+                      className="w-full h-full object-cover rounded-2xl"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                   )}
-                  {currentImage === "/results-image.jpg" && (
-                    <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-24 h-24 bg-green-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                          <span className="text-4xl">📊</span>
-                        </div>
-                        <p className="text-lg font-medium">Results</p>
-                      </div>
-                    </div>
+                  {currentImage === "/02.mp4" && (
+                    <video
+                      src="/02.mp4"
+                      className="w-full h-full object-cover rounded-2xl"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                   )}
-                  {currentImage === "/insights-image.jpg" && (
-                    <div className="w-full h-full bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-24 h-24 bg-purple-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                          <span className="text-4xl">💡</span>
-                        </div>
-                        <p className="text-lg font-medium">Insights</p>
-                      </div>
-                    </div>
+                  {currentImage === "/03.mp4" && (
+                    <video
+                      src="/03.mp4"
+                      className="w-full h-full object-cover rounded-2xl"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                   )}
-                  {currentImage === "/contact-image.jpg" && (
-                    <div className="w-full h-full bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-24 h-24 bg-orange-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                          <span className="text-4xl">📧</span>
-                        </div>
-                        <p className="text-lg font-medium">Contact</p>
-                      </div>
-                    </div>
+                  {currentImage === "/04.mp4" && (
+                    <video
+                      src="/04.mp4"
+                      className="w-full h-full object-cover rounded-2xl"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -199,6 +199,16 @@ export default function Home() {
           </motion.div>
         </div>
       </div>
+      
+      {/* Homepage Footer */}
+      <footer className="bg-white py-3 px-4 mt-0">
+        <div className="border-t border-gray-200 mb-3"></div>
+        <div className="text-center">
+          <p className="text-sm text-gray-500">
+            © 2025 vinsuka.com. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </main>
   )
 }

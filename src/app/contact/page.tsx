@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import { Mail, Linkedin, Twitter, Github, MessageSquare, Users, Briefcase, Lightbulb, Send } from "lucide-react"
 
 interface CollaborationOpportunity {
@@ -303,6 +304,7 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

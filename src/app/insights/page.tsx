@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import { BookOpen, Play, Headphones, ExternalLink, Calendar, Clock, ArrowUpRight } from "lucide-react"
 
 interface BlogPost {
@@ -381,6 +382,7 @@ export default function InsightsPage() {
           </motion.div>
         )}
       </main>
+      <Footer />
     </>
   )
 }
